@@ -1,9 +1,11 @@
 package com.ishikota.dribbbleclientandroid.data.preference
 
-import android.content.SharedPreferences
+import android.content.Context
 import androidx.core.content.edit
 
-class DribbblePreferenceImpl(private val preference: SharedPreferences): DribbblePreference {
+class DribbblePreferenceImpl(context: Context) : DribbblePreference {
+
+    private val preference = context.getSharedPreferences(KEY_PREF_NAME, Context.MODE_PRIVATE)
 
     override fun saveAccessToken(accessToken: String) {
         preference.edit {
@@ -20,6 +22,7 @@ class DribbblePreferenceImpl(private val preference: SharedPreferences): Dribbbl
     }
 
     companion object {
+        private const val KEY_PREF_NAME = "dribbble_preference"
         private const val KEY_ACCESS_TOKEN = "KEY_ACCESS_TOKEN"
     }
 }
