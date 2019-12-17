@@ -31,6 +31,8 @@ android {
                 stringLiteral("https://dribbble.com/")
         buildConfigField "String", "DRIBBBLE_OAUTH_REDIRECT_URI",
                 stringLiteral("ishikota://callback")
+        buildConfigField "String", "DRIBBBLE_API_ENDPOINT",
+                stringLiteral("https://api.dribbble.com/")
         buildConfigField "String", "DRIBBBLE_CLIENT_ID",
                 stringLiteral("38efc465078722414adbedbfa2f43dd41b93178096489b85e5a6a81f2fa788e4")
         buildConfigField "String", "DRIBBBLE_CLIENT_SECRET",
