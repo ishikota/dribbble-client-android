@@ -25,6 +25,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // Define static consts for app
+        buildConfigField "String", "DRIBBBLE_OAUTH_URI",
+                stringLiteral("https://dribbble.com/oauth/authorize")
         buildConfigField "String", "DRIBBBLE_OAUTH_ENDPOINT",
                 stringLiteral("https://dribbble.com/")
         buildConfigField "String", "DRIBBBLE_OAUTH_REDIRECT_URI",

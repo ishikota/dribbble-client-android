@@ -1,20 +1,23 @@
 package com.ishikota.dribbbleclientandroid
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.ishikota.dribbbleclientandroid.data.repository.DribbbleOauthRepository
 import com.ishikota.dribbbleclientandroid.data.repository.DribbbleOauthRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class OauthCallbackReceiverActivity : AppCompatActivity() {
-    private val repository = DribbbleOauthRepositoryImpl.Factory.create(this)
+    private lateinit var repository : DribbbleOauthRepository
     private val compositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        repository = DribbbleOauthRepositoryImpl.Factory.create(this)
 
         Log.i("OauthSampleActivity", "onCreate called with ${intent.data}")
         val uri = intent.data
@@ -40,7 +43,8 @@ class OauthCallbackReceiverActivity : AppCompatActivity() {
     }
 
     private fun startMainActivity() {
-        Toast.makeText(this, "TODO startMainActivity", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun showOauthErrorMessageAndFinish(error: Throwable) {
